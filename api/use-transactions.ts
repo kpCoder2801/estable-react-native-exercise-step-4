@@ -116,9 +116,11 @@ const useGetTransactions = (params: GetTransactionsParams) => {
 };
 
 const useGetTransactionsInfinite = (
-  filters: TransactionFilters & { pageSize?: number }
+  filters: TransactionFilters & { pageSize?: number },
+  options?: { refetchInterval?: number }
 ) => {
   const { pageSize = 10, types = [], accounts = [] } = filters;
+  const { refetchInterval } = options || {};
 
   return useInfiniteQuery<TransactionsResponse>({
     queryKey: ["transactions-infinite", pageSize, types, accounts],
@@ -133,6 +135,7 @@ const useGetTransactionsInfinite = (
     staleTime: 1000 * 60 * 5,
     retry: 2,
     retryDelay: (attemptIndex) => Math.min(1000 * 2 ** attemptIndex, 30000),
+    ...(refetchInterval && { refetchInterval }),
   });
 };
 
