@@ -1,11 +1,12 @@
+import { Box } from "@/components/ui/box";
+import { Text } from "@/components/ui/text";
 import React from "react";
-import { Text, View } from "react-native";
 
 const Screen: React.FC = () => {
   return (
-    <View className="items-center justify-center flex-1">
+    <Box className="items-center justify-center flex-1 bg-estable-grey-900">
       <Text className="text-xl font-medium">Screen</Text>
-    </View>
+    </Box>
   );
 };
 
