@@ -1,4 +1,4 @@
-import { createMemoryStore } from "@/utils";
+import { createMemoryStore } from "@/utils/persist-store";
 
 type Theme = "light" | "dark" | "system";
 
