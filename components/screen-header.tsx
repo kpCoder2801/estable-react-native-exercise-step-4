@@ -19,7 +19,7 @@ const ScreenHeader: React.FC<Props> = ({ allowBack = true }) => {
   const showBackButton = allowBack;
 
   return (
-    <Box>
+    <Box className="pb-6">
       <Box style={{ height: SAFE_AREA_TOP }} />
       {showBackButton ? (
         <Box className="items-start justify-start flex-shrink w-fit">
