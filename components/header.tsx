@@ -8,7 +8,7 @@ const FILTER_OPTIONS = ["Type", "Account", "Status", "Date"];
 
 const Header: React.FC = () => {
   return (
-    <VStack className="gap-3">
+    <VStack className="gap-3 pb-4">
       <Text className="text-3xl font-bold text-white">All transactions</Text>
       <HStack className="gap-2">
         {FILTER_OPTIONS.map((option) => (

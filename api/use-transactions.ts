@@ -1,7 +1,7 @@
 import { MOCK_TRANSACTION_LIST } from "@/constants";
 import { Transaction, TransactionAccount, TransactionType } from "@/types";
 import { Log, sleep } from "@/utils";
-import { useQuery } from "@tanstack/react-query";
+import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
 
 type TransactionFilters = {
   types?: TransactionType[];
@@ -115,9 +115,31 @@ const useGetTransactions = (params: GetTransactionsParams) => {
   });
 };
 
+const useGetTransactionsInfinite = (
+  filters: TransactionFilters & { pageSize?: number }
+) => {
+  const { pageSize = 10, types = [], accounts = [] } = filters;
+
+  return useInfiniteQuery<TransactionsResponse>({
+    queryKey: ["transactions-infinite", pageSize, types, accounts],
+    queryFn: ({ pageParam = 1 }) =>
+      getTransactions({ page: pageParam as number, pageSize, types, accounts }),
+    initialPageParam: 1,
+    getNextPageParam: (lastPage) => {
+      if (!lastPage.success) return undefined;
+      const { page, totalPages } = lastPage.data;
+      return page < totalPages ? page + 1 : undefined;
+    },
+    staleTime: 1000 * 60 * 5,
+    retry: 2,
+    retryDelay: (attemptIndex) => Math.min(1000 * 2 ** attemptIndex, 30000),
+  });
+};
+
 export {
   getTransactions,
   useGetTransactions,
+  useGetTransactionsInfinite,
   type GetTransactionsParams,
   type GroupedTransactionsResponse,
   type PaginationParams,
