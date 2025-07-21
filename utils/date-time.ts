@@ -10,4 +10,8 @@ const formatDateGroup = (date: string | Date): string => {
   return format(dateObj, "MMMM, d");
 };
 
-export { formatDateGroup, formatDateTime };
+const sleep = (ms: number): Promise<void> => {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+};
+
+export { formatDateGroup, formatDateTime, sleep };

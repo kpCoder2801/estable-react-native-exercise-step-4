@@ -1,7 +1,7 @@
+import { useGetTransactions } from "@/api";
 import { Header } from "@/components/header";
 import { ScreenLayout } from "@/components/screen-layout";
 import { TransactionGroup } from "@/components/transaction-group";
-import { MOCK_TRANSACTION_LIST } from "@/constants";
 import { Transaction as ITransaction } from "@/types";
 import { formatDateGroup } from "@/utils";
 import React from "react";
@@ -24,7 +24,8 @@ const groupTransactionsByDate = (
 };
 
 const Screen: React.FC = () => {
-  const groupedTransactions = groupTransactionsByDate(MOCK_TRANSACTION_LIST);
+  const { data } = useGetTransactions({ page: 1, pageSize: 10 });
+  const groupedTransactions = groupTransactionsByDate(data?.data.items || []);
 
   const sortedDateKeys = Object.keys(groupedTransactions).sort((a, b) => {
     const dateA = new Date(groupedTransactions[a][0].date);
