@@ -1,6 +1,6 @@
 import { MOCK_TRANSACTION_LIST } from "@/constants";
 import { Transaction, TransactionAccount, TransactionType } from "@/types";
-import { sleep } from "@/utils";
+import { Log, sleep } from "@/utils";
 import { useQuery } from "@tanstack/react-query";
 
 type TransactionFilters = {
@@ -54,6 +54,8 @@ const getTransactions = async (
   params: GetTransactionsParams
 ): Promise<TransactionsResponse> => {
   const { page = 1, pageSize = 10, ...filters } = params;
+
+  Log.info("Fetching transactions", { page, pageSize, filters });
 
   try {
     await sleep(Math.random() * 500 + 200); // 200-700ms delay
@@ -109,6 +111,7 @@ const useGetTransactions = (params: GetTransactionsParams) => {
     staleTime: 1000 * 60 * 5,
     retry: 2,
     retryDelay: (attemptIndex) => Math.min(1000 * 2 ** attemptIndex, 30000),
+    refetchInterval: 5000, // Auto poll every 5 seconds
   });
 };
 
