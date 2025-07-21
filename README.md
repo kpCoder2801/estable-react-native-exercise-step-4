@@ -1,50 +1,91 @@
-# Welcome to your Expo app 👋
+# Estable Exercise Step 4
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A React Native application built with Expo and Expo Router, featuring transaction management functionality with modern UI components and state management.
 
-## Get started
+## Quick Start
 
-1. Install dependencies
+### Prerequisites
 
-   ```bash
-   npm install
-   ```
+Before you begin, ensure you have the following installed on your machine:
 
-2. Start the app
+- **Node.js** (version 18 or later) - [Download here](https://nodejs.org/)
+- **Git** - [Download here](https://git-scm.com/)
+- **Expo CLI** (optional but recommended) - Install globally with `npm install -g @expo/cli`
 
-   ```bash
-   npx expo start
-   ```
-
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
+### 1. Clone the Repository
 
 ```bash
-npm run reset-project
+git clone https://github.com/kpCoder2801/estable-react-native-exercise-step-4.git
+cd estable-react-native-exercise-step-4
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+### 2. Install Dependencies
 
-## Learn more
+Choose your preferred package manager:
 
-To learn more about developing your project with Expo, look at the following resources:
+#### Using npm:
+```bash
+npm install
+```
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+#### Using yarn:
+```bash
+yarn install
+```
 
-## Join the community
+### 3. Run the Project
 
-Join our community of developers creating universal apps.
+#### Start the development server:
+```bash
+npm start
+```
+*or*
+```bash
+yarn start
+```
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+#### Platform-specific commands:
+
+**For iOS Simulator:**
+```bash
+npm run ios
+```
+
+**For Android Emulator:**
+```bash
+npm run android
+```
+
+## Development
+
+### Available Scripts
+
+- `npm start` - Start the Expo development server
+- `npm run ios` - Start the app on iOS simulator
+- `npm run android` - Start the app on Android emulator
+- `npm run web` - Start the app in web browser
+- `npm run lint` - Run ESLint to check code quality
+- `npm run reset-project` - Reset the project to initial state
+
+### Tech Stack
+
+- **Framework:** React Native with Expo (~53.0.20)
+- **Navigation:** Expo Router (~5.1.4)
+- **UI Library:** Gluestack UI with NativeWind
+- **State Management:** Zustand (~5.0.6)
+- **Data Fetching:** TanStack React Query (~5.83.0)
+- **Styling:** Tailwind CSS with NativeWind (~4.1.23)
+- **Icons:** Lucide React Native (~0.525.0)
+
+## Project Structure
+
+```
+├── app/                    # App screens and navigation (Expo Router)
+├── components/             # Reusable UI components
+├── api/                    # API utilities and hooks
+├── constants/              # App constants and configurations
+├── hooks/                  # Custom React hooks
+├── types/                  # TypeScript type definitions
+├── utils/                  # Utility functions
+└── assets/                 # Static assets (fonts, images)
+```
